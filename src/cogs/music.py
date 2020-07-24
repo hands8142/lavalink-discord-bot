@@ -72,6 +72,7 @@ class MusicCog(commands.Cog):
     if player == None:
       return await ctx.send("음악이 재생중이지 않습니다.")
     await player.skip()
+    await ctx.send("음악을 스킵 합니다.")
   
   @commands.command(name="stop")
   async def stop(self, ctx):
@@ -82,6 +83,7 @@ class MusicCog(commands.Cog):
     if player == None:
       return await ctx.send("음악이 재생중이지 않습니다.")
     await player.stop()
+    await ctx.send("음악을 끕니다.")
   
   @commands.command(name="pause")
   async def pause(self, ctx):
