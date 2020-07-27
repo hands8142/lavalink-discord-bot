@@ -11,7 +11,7 @@ class 음악(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
     self.bot.music = lavalink.Client(self.bot.user.id)
-    self.bot.music.add_node('localhost', int(os.getenv('PORT')), str(os.getenv('PASSWORD')), 'na', 'music-node')
+    self.bot.music.add_node(str(os.getenv('HOST')), int(os.getenv('PORT')), str(os.getenv('PASSWORD')), 'na', 'music-node')
     self.bot.add_listener(self.bot.music.voice_update_handler, 'on_socket_response')
     self.bot.music.add_event_hook(self.track_hook)
   
