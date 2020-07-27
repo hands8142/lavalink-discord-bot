@@ -183,12 +183,13 @@ class 음악(commands.Cog):
       return await ctx.send("봇이 음성 채널에 들어가 있지않습니다.")
     if not player.is_playing:
       return await ctx.send("음악이 재생중이지 않습니다.")
-    embed = Embed(title="재생 목록")
-    a = 1
+    a = 0
+    plist = ''
     for i in player.queue:
-      playlist = f"{a} {str(i['title'])}" 
       a = a + 1
-    embed.description = playlist
+      plist = plist + f"{a} {i['title']}\n"
+    embed = Embed(title="재생 목록")
+    embed.description = plist
     await ctx.send(embed=embed)
 
   @commands.command(name="current")
@@ -206,7 +207,7 @@ class 음악(commands.Cog):
   @commands.command(name="find")
   async def find(self, ctx, *, query):
     """음악을 찾습니다.(음악을 재생하지는 않습니다.)"""
-    player = self.bot.music.player_manager.get(ctx.guild.id)
+    player = self.bot.music.player_manager.create(ctx.guild.id, endpoint=str(ctx.guild.region))
     if not player.is_connected:
         await ctx.invoke(self.join)
     query = f'ytsearch:{query}'

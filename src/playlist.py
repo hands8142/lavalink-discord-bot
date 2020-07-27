@@ -7,5 +7,5 @@ playlist = [
   "lovely",
   "Painkiller",
   "Falling",
-  "Stay"
+  "Zedd, Alessia Cara - Stay (Lyric Video)"
 ]
